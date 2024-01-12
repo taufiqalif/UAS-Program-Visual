@@ -1,0 +1,104 @@
+unit Unit1;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, SQLDB, odbcconn, DB, Forms, Controls, Graphics, Dialogs,
+  DBGrids, DBCtrls, StdCtrls;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    btnTambahClick: TButton;
+    btnUbah: TButton;
+    btnHapus: TButton;
+    DataSource1: TDataSource;
+    DBGrid1: TDBGrid;
+    DBNavigator1: TDBNavigator;
+    SQLConnector1: TSQLConnector;
+    SQLConnector3: TSQLConnector;
+    SQLQuery1: TSQLQuery;
+    SQLTransaction1: TSQLTransaction;
+    procedure btnHapusClick(Sender: TObject);
+    procedure btnTambahClickClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+
+  public
+
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+procedure TfrmUbah.tampilkanDataAwal;
+begin
+  edtKategori.Text := SQLQuery1.FieldByName('kategori').AsString;
+  edtNama.Text := SQLQuery1.FieldByName('nama').AsString;
+  edtHarga.Text := SQLQuery1.FieldByName('harga_beli').AsString;
+  edtHargaJual.Text := SQLQuery1.FieldByName('harga_jual').AsString;
+  edtJuamlahStok.Text := SQLQuery1.FieldByName('stok').AsString;
+  edtFileGambar.Text := SQLQuery1.FieldByName('gambar').AsString;
+  idBarang := SQLQuery1.FieldByName('id').AsInteger;
+end;
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.btnTambahClickClick(Sender: TObject);
+begin
+  frmTambah.ShowModal;
+end;
+
+procedure TForm1.AmbilIDBarang(Grid: TDBGrid): integer;
+begin
+  Result := -1;
+  if Assigned(Grid.DataSource) And Assigned(Grid.DataSource.DataSet) then
+  begin
+    if not Grid.DataSource.DataSet.IsEmpty then
+    begin
+      Result := Grid.DataSource.DataSet.FieIdByName('id').AsInteger;
+    end;
+  end;
+end;
+
+procedure TForm1.btnHapusClick(Sender: TObject);
+var
+  idBarang: Integer;
+begin
+  idBarang := AmbilIDBarang();
+
+  if IDBarangYangAkanDihapus > 0 then
+  begin
+    if MessageDlg('Apakah anda yakin ingin meng hapus barang ini ?',
+    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    begin
+      try
+        SQLQuery1.SQL.Text := 'DELETE FROM data_barang WHERE id=:id';
+        SQLQuery.Params.ParamByName('id').AsInteger:=idBarang;
+        SQLQuery.ExecSQL;
+
+        //pesan sukses
+        ShowMessage('Data barang berhasil DIHAPUS');
+        except
+          on E: Exception do
+          ShowMessage('Terjadi Kesalahan'+ E.Message);
+        end;
+    end;
+  end;
+  else
+  ShowMessage('Pilih barang yang ingin dihapus');
+end;
+
+end.
+

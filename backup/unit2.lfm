@@ -1,0 +1,132 @@
+object Form2: TForm2
+  Left = 257
+  Height = 339
+  Top = 31
+  Width = 459
+  Caption = 'Form2'
+  ClientHeight = 339
+  ClientWidth = 459
+  object Label1: TLabel
+    Left = 80
+    Height = 37
+    Top = 32
+    Width = 290
+    Caption = 'Forum Tambah Barang'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -27
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 70
+    Height = 15
+    Top = 96
+    Width = 44
+    Caption = 'Kategori'
+  end
+  object Label3: TLabel
+    Left = 70
+    Height = 15
+    Top = 128
+    Width = 72
+    Caption = 'Nama Barang'
+  end
+  object Label4: TLabel
+    Left = 70
+    Height = 15
+    Top = 160
+    Width = 54
+    Caption = 'Harga Beli'
+  end
+  object Label5: TLabel
+    Left = 70
+    Height = 15
+    Top = 192
+    Width = 55
+    Caption = 'Harga Jual'
+  end
+  object Label6: TLabel
+    Left = 70
+    Height = 15
+    Top = 224
+    Width = 67
+    Caption = 'Julmlah Stok'
+    OnClick = Label6Click
+  end
+  object Label7: TLabel
+    Left = 70
+    Height = 15
+    Top = 256
+    Width = 78
+    Caption = 'Lokasi Gambar'
+  end
+  object edtKategori: TEdit
+    Left = 184
+    Height = 23
+    Top = 93
+    Width = 192
+    TabOrder = 0
+    Text = 'edtKategori'
+  end
+  object edtNama: TEdit
+    Left = 184
+    Height = 23
+    Top = 128
+    Width = 192
+    TabOrder = 1
+    Text = 'edtNama'
+  end
+  object edtHarga: TEdit
+    Left = 184
+    Height = 23
+    Top = 160
+    Width = 192
+    TabOrder = 2
+    Text = 'edtHarga'
+  end
+  object edtHargaJual: TEdit
+    Left = 184
+    Height = 23
+    Top = 192
+    Width = 192
+    TabOrder = 3
+    Text = 'edtHargaJual'
+  end
+  object edtJumlahStok: TEdit
+    Left = 184
+    Height = 23
+    Top = 224
+    Width = 192
+    TabOrder = 4
+    Text = 'edtJumlahStok'
+  end
+  object edtFileGambar: TEdit
+    Left = 184
+    Height = 23
+    Top = 256
+    Width = 192
+    TabOrder = 5
+    Text = 'edtFileGambar'
+  end
+  object btnSimpan: TButton
+    Left = 112
+    Height = 25
+    Top = 296
+    Width = 66
+    AutoSize = True
+    Caption = 'Simpan'
+    OnClick = btnSimpanClick
+    TabOrder = 6
+  end
+  object btnClose: TButton
+    Left = 232
+    Height = 25
+    Top = 296
+    Width = 75
+    Caption = 'Close'
+    TabOrder = 7
+  end
+end

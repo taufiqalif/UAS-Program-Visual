@@ -1,0 +1,61 @@
+object Form9: TForm9
+  Left = 257
+  Height = 240
+  Top = 31
+  Width = 478
+  Caption = 'Form9'
+  ClientHeight = 240
+  ClientWidth = 478
+  object Label1: TLabel
+    Left = 120
+    Height = 30
+    Top = 14
+    Width = 235
+    Caption = 'Tambah Detail Transaksi'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 61
+    Height = 15
+    Top = 70
+    Width = 63
+    Caption = 'Pilih Barang'
+  end
+  object Label3: TLabel
+    Left = 62
+    Height = 15
+    Top = 112
+    Width = 78
+    Caption = 'Jumlah Barang'
+  end
+  object edtJumlahBarang: TEdit
+    Left = 200
+    Height = 23
+    Top = 104
+    Width = 160
+    TabOrder = 0
+    Text = 'edtJumlahBarang'
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 200
+    Height = 23
+    Top = 62
+    Width = 208
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 1
+  end
+  object btnTambahBarang: TButton
+    Left = 200
+    Height = 25
+    Top = 157
+    Width = 101
+    Caption = 'Tambah Barang'
+    TabOrder = 2
+  end
+end

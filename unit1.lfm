@@ -1,0 +1,146 @@
+object Form1: TForm1
+  Left = 257
+  Height = 346
+  Top = 31
+  Width = 503
+  Caption = 'Form1'
+  ClientHeight = 346
+  ClientWidth = 503
+  Color = clSilver
+  object Label1: TLabel
+    Left = 176
+    Height = 30
+    Top = 16
+    Width = 120
+    Caption = 'Data Barang'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 48
+    Height = 144
+    Top = 128
+    Width = 408
+    AutoEdit = False
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource1
+    TabOrder = 0
+    TabStop = False
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 128
+    Height = 25
+    Top = 296
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = DataSource1
+    Options = []
+    TabOrder = 1
+  end
+  object btnTambah: TButton
+    Left = 64
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'Tambah'
+    OnClick = btnTambahClick
+    TabOrder = 2
+  end
+  object btnUbah: TButton
+    Left = 152
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'Ubah'
+    OnClick = btnUbahClick
+    TabOrder = 3
+  end
+  object btnHapus: TButton
+    Left = 240
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'Hapus'
+    TabOrder = 4
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 160
+    Top = 216
+  end
+  object SQLQuery1: TSQLQuery
+    PacketRecords = 1
+    IndexName = 'DEFAULT_ORDER'
+    UniDirectional = True
+    MaxIndexesCount = 3
+    FieldDefs = <    
+      item
+        Name = 'id_barang'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'harga_beli'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'harga_jual'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'stok'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT id_barang,nama,harga_beli,harga_jual,stok FROM data_barang'
+    )
+    Params = <>
+    Macros = <>
+    Left = 248
+    Top = 216
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 72
+    Top = 216
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'latihan1'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = 'localhost'
+    ConnectorType = 'ODBC'
+    Left = 328
+    Top = 216
+  end
+end

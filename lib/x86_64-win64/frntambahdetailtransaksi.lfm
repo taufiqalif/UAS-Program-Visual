@@ -1,0 +1,146 @@
+object Form9: TForm9
+  Left = 257
+  Height = 240
+  Top = 31
+  Width = 478
+  Caption = 'Form9'
+  ClientHeight = 240
+  ClientWidth = 478
+  object Label1: TLabel
+    Left = 120
+    Height = 30
+    Top = 14
+    Width = 235
+    Caption = 'Tambah Detail Transaksi'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 61
+    Height = 15
+    Top = 70
+    Width = 63
+    Caption = 'Pilih Barang'
+  end
+  object Label3: TLabel
+    Left = 62
+    Height = 15
+    Top = 112
+    Width = 78
+    Caption = 'Jumlah Barang'
+  end
+  object edtJumlahBarang: TEdit
+    Left = 200
+    Height = 23
+    Top = 104
+    Width = 160
+    TabOrder = 0
+    Text = 'edtJumlahBarang'
+  end
+  object dbLookupBarang: TDBLookupComboBox
+    Left = 200
+    Height = 23
+    Top = 62
+    Width = 208
+    DataSource = DataSource1
+    KeyField = 'id'
+    ListField = 'nama'
+    ListFieldIndex = 0
+    LookupCache = False
+    TabOrder = 1
+  end
+  object btnTambahBarang: TButton
+    Left = 200
+    Height = 25
+    Top = 157
+    Width = 101
+    Caption = 'Tambah Barang'
+    TabOrder = 2
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id_barang'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'kategori'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'kategori_id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'gambar'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'harga_beli'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'harga_jual'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'stok'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM data_barang'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 432
+    Top = 56
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 333
+    Top = 184
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'latihan1'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = 'localhost'
+    ConnectorType = 'ODBC'
+    Left = 424
+    Top = 184
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 432
+    Top = 120
+  end
+end

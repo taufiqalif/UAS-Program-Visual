@@ -1,0 +1,55 @@
+object Form5: TForm5
+  Left = 257
+  Height = 317
+  Top = 31
+  Width = 496
+  Caption = 'Form5'
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  object MainMenu1: TMainMenu
+    Left = 24
+    Top = 32
+    object menuFile: TMenuItem
+      Caption = 'File'
+      object menuLogin: TMenuItem
+        Caption = 'Login'
+        OnClick = menuLoginClick
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Logout'
+        OnClick = MenuItem6Click
+      end
+      object menuExit: TMenuItem
+        Caption = 'Exit'
+        OnClick = menuExitClick
+      end
+    end
+    object MenuItem2: TMenuItem
+      Caption = 'Data Master'
+      object menuBarang: TMenuItem
+        Caption = 'Data Barang'
+        OnClick = menuBarangClick
+      end
+      object menuKategori: TMenuItem
+        Caption = 'Data Kategori Barang'
+        OnClick = menuKategoriClick
+      end
+      object menuCustomer: TMenuItem
+        Caption = 'Data Customer'
+      end
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'Transaksi'
+      object menuTransaksi: TMenuItem
+        Caption = 'Transaksi Penjualan'
+        OnClick = menuTransaksiClick
+      end
+    end
+    object MenuItem4: TMenuItem
+      Caption = 'Laporan'
+      object menuLaporan: TMenuItem
+        Caption = 'Report Laporan'
+      end
+    end
+  end
+end

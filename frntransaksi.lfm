@@ -1,0 +1,194 @@
+object Form7: TForm7
+  Left = 257
+  Height = 360
+  Top = 31
+  Width = 642
+  Caption = 'Form7'
+  ClientHeight = 360
+  ClientWidth = 642
+  Color = clSilver
+  object Label1: TLabel
+    Left = 224
+    Height = 30
+    Top = 8
+    Width = 191
+    Caption = 'Transaksi Penjualan'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 40
+    Height = 120
+    Top = 88
+    Width = 576
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object DBGrid2: TDBGrid
+    Left = 40
+    Height = 100
+    Top = 248
+    Width = 576
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource2
+    TabOrder = 1
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 40
+    Height = 25
+    Top = 48
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    Options = []
+    TabOrder = 2
+  end
+  object btnTambah: TButton
+    Left = 392
+    Height = 25
+    Top = 48
+    Width = 120
+    Caption = 'Tambah Transaksi'
+    OnClick = btnTambahClick
+    TabOrder = 3
+  end
+  object btnDetail: TButton
+    Left = 392
+    Height = 25
+    Top = 216
+    Width = 99
+    Caption = 'Tambah Detail'
+    OnClick = btnDetailClick
+    TabOrder = 4
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'tanggal'
+        DataType = ftDateTime
+        Precision = -1
+      end    
+      item
+        Name = 'customer'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'sub_total'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'diskon'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'total'
+        DataType = ftFloat
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM transaksi'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 264
+    Top = 128
+  end
+  object SQLQuery2: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'transaksi_id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'barang_id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'jumlah'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'diskon'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM detail_transaksi'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 264
+    Top = 280
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 358
+    Top = 128
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'latihan1'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = 'localhost'
+    ConnectorType = 'ODBC'
+    Left = 464
+    Top = 128
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 176
+    Top = 128
+  end
+  object DataSource2: TDataSource
+    DataSet = SQLQuery2
+    Left = 176
+    Top = 280
+  end
+end

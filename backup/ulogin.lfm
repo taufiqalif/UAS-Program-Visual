@@ -1,0 +1,98 @@
+object Form6: TForm6
+  Left = 257
+  Height = 268
+  Top = 31
+  Width = 493
+  Caption = 'Form6'
+  ClientHeight = 268
+  ClientWidth = 493
+  object Label1: TLabel
+    Left = 176
+    Height = 32
+    Top = 24
+    Width = 130
+    Caption = 'Form Login'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 82
+    Height = 15
+    Top = 96
+    Width = 49
+    Caption = 'Usename'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 82
+    Height = 15
+    Top = 136
+    Width = 50
+    Caption = 'Password'
+    ParentColor = False
+  end
+  object edtUsername: TEdit
+    Left = 193
+    Height = 23
+    Top = 88
+    Width = 183
+    TabOrder = 0
+  end
+  object edtPassword: TEdit
+    Left = 193
+    Height = 23
+    Top = 128
+    Width = 183
+    TabOrder = 1
+  end
+  object btnLogin: TButton
+    Left = 176
+    Height = 25
+    Top = 184
+    Width = 75
+    Caption = 'Login'
+    OnClick = btnLoginClick
+    TabOrder = 2
+  end
+  object btnCencel: TButton
+    Left = 301
+    Height = 25
+    Top = 184
+    Width = 75
+    Caption = 'Cencel'
+    OnClick = btnCencelClick
+    TabOrder = 3
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    Left = 64
+    Top = 200
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    AfterConnect = SQLConnector1AfterConnect
+    DatabaseName = 'latihan1'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    ConnectorType = 'ODBC'
+    Left = 376
+    Top = 200
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 128
+    Top = 200
+  end
+end

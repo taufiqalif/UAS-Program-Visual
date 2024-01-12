@@ -1,0 +1,185 @@
+object Form2: TForm2
+  Left = 257
+  Height = 351
+  Top = 31
+  Width = 571
+  Caption = 'Form2'
+  ClientHeight = 351
+  ClientWidth = 571
+  Color = clSilver
+  object Label1: TLabel
+    Left = 184
+    Height = 30
+    Top = 24
+    Width = 128
+    Caption = 'Tambah Data'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 96
+    Height = 15
+    Top = 80
+    Width = 32
+    Caption = 'Nama'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 97
+    Height = 15
+    Top = 112
+    Width = 44
+    Caption = 'Kategori'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 96
+    Height = 15
+    Top = 144
+    Width = 54
+    Caption = 'Harga Beli'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    Left = 96
+    Height = 15
+    Top = 184
+    Width = 55
+    Caption = 'Harga Jual'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 96
+    Height = 15
+    Top = 216
+    Width = 64
+    Caption = 'Jumlah Stok'
+    ParentColor = False
+  end
+  object Label7: TLabel
+    Left = 96
+    Height = 15
+    Top = 248
+    Width = 63
+    Caption = 'File Gambar'
+    ParentColor = False
+  end
+  object edtNama: TEdit
+    Left = 224
+    Height = 23
+    Top = 72
+    Width = 208
+    TabOrder = 0
+  end
+  object edtHarga: TEdit
+    Left = 224
+    Height = 23
+    Top = 136
+    Width = 208
+    TabOrder = 1
+  end
+  object edtHargaJual: TEdit
+    Left = 224
+    Height = 23
+    Top = 176
+    Width = 208
+    TabOrder = 2
+  end
+  object edtJumlahStok: TEdit
+    Left = 224
+    Height = 23
+    Top = 208
+    Width = 208
+    TabOrder = 3
+  end
+  object edtFileGambar: TEdit
+    Left = 224
+    Height = 23
+    Top = 240
+    Width = 208
+    TabOrder = 4
+  end
+  object dbLookupKategori: TDBLookupComboBox
+    Left = 224
+    Height = 23
+    Top = 104
+    Width = 208
+    DataField = 'id'
+    DataSource = DataSource1
+    DoubleBuffered = True
+    KeyField = 'id'
+    ListField = 'nama'
+    ListFieldIndex = 0
+    ListSource = DataSource1
+    LookupCache = False
+    ParentDoubleBuffered = False
+    TabOrder = 5
+  end
+  object Button1: TButton
+    Left = 224
+    Height = 25
+    Top = 280
+    Width = 75
+    Caption = 'Simpan'
+    OnClick = Button1Click
+    TabOrder = 6
+  end
+  object SQLQuery1: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    MaxIndexesCount = 4
+    FieldDefs = <    
+      item
+        Name = 'id'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'SELECT * FROM kategori'
+      ''
+    )
+    UpdateSQL.Strings = (
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 464
+    Top = 128
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'latihan1'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = 'localhost'
+    ConnectorType = 'ODBC'
+    Left = 336
+    Top = 280
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = SQLConnector1
+    Left = 424
+    Top = 280
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 464
+    Top = 68
+  end
+end

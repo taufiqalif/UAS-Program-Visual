@@ -1,0 +1,153 @@
+jiobject Form1: TForm1
+  Left = 257
+  Height = 338
+  Top = 31
+  Width = 544
+  Caption = 'Form1'
+  ClientHeight = 338
+  ClientWidth = 544
+  OnCreate = FormCreate
+  object Label1: TLabel
+    Left = 152
+    Height = 32
+    Top = 16
+    Width = 238
+    Caption = 'Aplikasi Data Barang'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -24
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 40
+    Height = 172
+    Top = 104
+    Width = 448
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 136
+    Height = 25
+    Top = 296
+    Width = 241
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 25
+    ClientWidth = 241
+    DataSource = DataSource1
+    Options = []
+    TabOrder = 1
+  end
+  object btnTambah: TButton
+    Left = 48
+    Height = 25
+    Top = 64
+    Width = 75
+    Caption = 'Tambah'
+    OnClick = btnTambahClick
+    TabOrder = 2
+  end
+  object btnUbah: TButton
+    Left = 184
+    Height = 25
+    Top = 64
+    Width = 75
+    Caption = 'Ubah'
+    TabOrder = 3
+  end
+  object SQLQuery1: TSQLQuery
+    PacketRecords = 1
+    IndexName = 'DEFAULT_ORDER'
+    UniDirectional = True
+    MaxIndexesCount = 3
+    FieldDefs = <    
+      item
+        Name = 'id_barang'
+        DataType = ftAutoInc
+        Precision = -1
+      end    
+      item
+        Name = 'kategori'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'kategori_id'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'nama'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
+        Name = 'gambar'
+        DataType = ftString
+        Precision = -1
+        Size = 100
+      end    
+      item
+        Name = 'harga_beli'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'harga_jual'
+        DataType = ftFloat
+        Precision = -1
+      end    
+      item
+        Name = 'stok'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    ReadOnly = True
+    SQL.Strings = (
+      'SELECT * FROM data_barang'
+      ''
+    )
+    Params = <>
+    Macros = <>
+    Left = 264
+    Top = 222
+  end
+  object SQLConnector1: TSQLConnector
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = ''
+    KeepConnection = False
+    Transaction = 
+    UserName = 'root'
+    HostName = 'localhost:8080'
+    ConnectorType = 'ODBC'
+    Left = 356
+    Top = 222
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    Left = 176
+    Top = 224
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = 
+    Database = SQLConnector1
+    Left = 84
+    Top = 224
+  end
+end

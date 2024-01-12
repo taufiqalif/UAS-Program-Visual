@@ -1,0 +1,46 @@
+object Form8: TForm8
+  Left = 257
+  Height = 235
+  Top = 31
+  Width = 477
+  Caption = 'Form8'
+  ClientHeight = 235
+  ClientWidth = 477
+  object Label1: TLabel
+    Left = 152
+    Height = 30
+    Top = 24
+    Width = 172
+    Caption = 'Tambah Transaksi'
+    Font.CharSet = ANSI_CHARSET
+    Font.Height = -21
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 62
+    Height = 15
+    Top = 100
+    Width = 87
+    Caption = 'Nama Customer'
+    ParentColor = False
+  end
+  object edtNamaCustomer: TEdit
+    Left = 186
+    Height = 23
+    Top = 92
+    Width = 224
+    TabOrder = 0
+  end
+  object btnTambahTransaksi: TButton
+    Left = 184
+    Height = 25
+    Top = 160
+    Width = 120
+    Caption = 'Tambah Transaksi'
+    TabOrder = 1
+  end
+end
