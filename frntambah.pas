@@ -17,19 +17,18 @@ type
   TForm2 = class(TForm)
     Button1: TButton;
     DataSource1: TDataSource;
+    DataSource2: TDataSource;
     dbLookupKategori: TDBLookupComboBox;
     edtNama: TEdit;
     edtHarga: TEdit;
     edtHargaJual: TEdit;
     edtJumlahStok: TEdit;
-    edtFileGambar: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
     SQLConnector1: TSQLConnector;
     SQLQuery1: TSQLQuery;
     SQLQuery2: TSQLQuery;
@@ -87,22 +86,19 @@ begin
 procedure TForm2.Button1Click(Sender: TObject);
 begin
    try
-     with SQLQuery1 do
+     with SQLQuery2 do
      begin
 
      SQLQuery1.Close;
      SQLQuery1.SQL.Clear;
-     SQLQuery1.SQL.Add('INSERT INTO data_barang (kategori, nama, gambar, harga_beli, harga_jual, stok)');
-     SQLQuery1.SQL.Add('VALUES (:kategori, :nama, :gambar, :harga_beli, :harga_jual, :stok)');
+     SQLQuery1.SQL.Add('INSERT INTO data_barang (nama, kategori, harga_beli, harga_jual, stok)');
+     SQLQuery1.SQL.Add('VALUES (:nama, (SELECT nama FROM kategori WHERE nama = :kategori), :harga_beli, :harga_jual, :stok)');
 
-     //SQLQuery1.ParamByName('kategori_id').AsInteger := dbLookupKategori.KeyValue;
-     Params.ParamByName('kategori').AsString:=dbLookupKategori.Text;
-     //SQLQuery1.ParamByName('kategori_id').AsInteger := StrToInt64(dbLookupKategori.KeyValue);
      SQLQuery1.ParamByName('nama').AsString := edtNama.Text;
+     SQLQuery1.ParamByName('kategori').AsString:=dbLookupKategori.Text;
      SQLQuery1.ParamByName('harga_beli').AsInteger := StrToIntDef(edtHarga.Text, 0);
      SQLQuery1.ParamByName('harga_jual').AsInteger := StrToIntDef(edtHargaJual.Text, 0);
      SQLQuery1.ParamByName('stok').AsInteger := StrToIntDef(edtJumlahStok.Text, 0);
-     SQLQuery1.ParamByName('gambar').AsString := edtFileGambar.Text;
 
      SQLQuery1.ExecSQL;
 
@@ -115,12 +111,9 @@ begin
      edtHarga.Text := '';
      edtHargaJual.Text := '';
      edtJumlahStok.Text := '';
-     edtFileGambar.Text := '';
-
-
 
      end;
-
+     SQLQuery1.Open;
      except
        on E: Exception do
           ShowMessage('Terjadi Kesalahan'+ E.Message);

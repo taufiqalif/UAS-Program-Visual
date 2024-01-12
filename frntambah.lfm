@@ -61,14 +61,6 @@ object Form2: TForm2
     Caption = 'Jumlah Stok'
     ParentColor = False
   end
-  object Label7: TLabel
-    Left = 96
-    Height = 15
-    Top = 248
-    Width = 63
-    Caption = 'File Gambar'
-    ParentColor = False
-  end
   object edtNama: TEdit
     Left = 224
     Height = 23
@@ -97,13 +89,6 @@ object Form2: TForm2
     Width = 208
     TabOrder = 3
   end
-  object edtFileGambar: TEdit
-    Left = 224
-    Height = 23
-    Top = 240
-    Width = 208
-    TabOrder = 4
-  end
   object dbLookupKategori: TDBLookupComboBox
     Left = 224
     Height = 23
@@ -118,7 +103,7 @@ object Form2: TForm2
     ListSource = DataSource1
     LookupCache = False
     ParentDoubleBuffered = False
-    TabOrder = 5
+    TabOrder = 4
   end
   object Button1: TButton
     Left = 224
@@ -127,7 +112,7 @@ object Form2: TForm2
     Width = 75
     Caption = 'Simpan'
     OnClick = Button1Click
-    TabOrder = 6
+    TabOrder = 5
   end
   object SQLQuery1: TSQLQuery
     IndexName = 'DEFAULT_ORDER'
@@ -151,8 +136,18 @@ object Form2: TForm2
       'SELECT * FROM kategori'
       ''
     )
+    InsertSQL.Strings = (
+      ''
+      ''
+    )
     UpdateSQL.Strings = (
       ''
+    )
+    RefreshSQL.Strings = (
+      ''
+      ''
+      ''
+      'SELECT * FROM kategori'
     )
     Params = <>
     Macros = <>
@@ -181,5 +176,19 @@ object Form2: TForm2
     DataSet = SQLQuery1
     Left = 464
     Top = 68
+  end
+  object SQLQuery2: TSQLQuery
+    FieldDefs = <>
+    Database = SQLConnector1
+    Transaction = SQLTransaction1
+    Params = <>
+    Macros = <>
+    Left = 464
+    Top = 200
+  end
+  object DataSource2: TDataSource
+    DataSet = SQLQuery2
+    Left = 514
+    Top = 272
   end
 end
