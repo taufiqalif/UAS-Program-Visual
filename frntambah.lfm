@@ -134,19 +134,8 @@ object Form2: TForm2
     Transaction = SQLTransaction1
     SQL.Strings = (
       'SELECT * FROM kategori'
-      ''
-    )
-    InsertSQL.Strings = (
-      ''
-      ''
-    )
-    UpdateSQL.Strings = (
-      ''
     )
     RefreshSQL.Strings = (
-      ''
-      ''
-      ''
       'SELECT * FROM kategori'
     )
     Params = <>
