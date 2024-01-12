@@ -7,6 +7,7 @@ object Form1: TForm1
   ClientHeight = 346
   ClientWidth = 503
   Color = clSilver
+  OnCreate = FormCreate
   object Label1: TLabel
     Left = 176
     Height = 30
@@ -22,60 +23,70 @@ object Form1: TForm1
     ParentFont = False
   end
   object DBGrid1: TDBGrid
-    Left = 48
+    Left = 24
     Height = 144
-    Top = 128
-    Width = 408
+    Top = 112
+    Width = 464
     AutoEdit = False
     Color = clWindow
     Columns = <>
     DataSource = DataSource1
     TabOrder = 0
     TabStop = False
-  end
-  object DBNavigator1: TDBNavigator
-    Left = 128
-    Height = 25
-    Top = 296
-    Width = 241
-    BevelOuter = bvNone
-    ChildSizing.EnlargeHorizontal = crsScaleChilds
-    ChildSizing.EnlargeVertical = crsScaleChilds
-    ChildSizing.ShrinkHorizontal = crsScaleChilds
-    ChildSizing.ShrinkVertical = crsScaleChilds
-    ChildSizing.Layout = cclLeftToRightThenTopToBottom
-    ChildSizing.ControlsPerLine = 100
-    ClientHeight = 25
-    ClientWidth = 241
-    DataSource = DataSource1
-    Options = []
-    TabOrder = 1
+    OnCellClick = DBGrid1CellClick
   end
   object btnTambah: TButton
-    Left = 64
+    Left = 136
     Height = 25
-    Top = 80
+    Top = 296
     Width = 75
     Caption = 'Tambah'
     OnClick = btnTambahClick
-    TabOrder = 2
+    TabOrder = 1
   end
   object btnUbah: TButton
-    Left = 152
+    Left = 256
     Height = 25
-    Top = 80
+    Top = 296
     Width = 75
     Caption = 'Ubah'
     OnClick = btnUbahClick
-    TabOrder = 3
+    TabOrder = 2
   end
   object btnHapus: TButton
-    Left = 240
+    Left = 360
     Height = 25
-    Top = 80
+    Top = 296
     Width = 75
     Caption = 'Hapus'
+    OnClick = btnHapusClick
+    TabOrder = 3
+  end
+  object edtCari: TEdit
+    Left = 41
+    Height = 23
+    Top = 69
+    Width = 240
     TabOrder = 4
+    Text = 'Cari Barang'
+  end
+  object btnCari: TButton
+    Left = 316
+    Height = 25
+    Top = 67
+    Width = 75
+    Caption = 'Cari Barang'
+    OnClick = btnCariClick
+    TabOrder = 5
+  end
+  object btnReset: TButton
+    Left = 408
+    Height = 25
+    Top = 66
+    Width = 75
+    Caption = 'Reset'
+    OnClick = btnResetClick
+    TabOrder = 6
   end
   object DataSource1: TDataSource
     DataSet = SQLQuery1
@@ -100,6 +111,12 @@ object Form1: TForm1
         Size = 30
       end    
       item
+        Name = 'kategori'
+        DataType = ftString
+        Precision = -1
+        Size = 30
+      end    
+      item
         Name = 'harga_beli'
         DataType = ftFloat
         Precision = -1
@@ -118,7 +135,7 @@ object Form1: TForm1
     Database = SQLConnector1
     Transaction = SQLTransaction1
     SQL.Strings = (
-      'SELECT id_barang,nama,harga_beli,harga_jual,stok FROM data_barang'
+      'SELECT id_barang,nama,kategori,harga_beli,harga_jual,stok FROM data_barang'
     )
     Params = <>
     Macros = <>

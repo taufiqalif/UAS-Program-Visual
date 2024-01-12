@@ -35,10 +35,11 @@ type
     SQLTransaction1: TSQLTransaction;
     procedure btnSimpanClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
-
+    add: boolean
   end;
 
 var
@@ -52,35 +53,7 @@ implementation
 
 procedure TForm2.btnSimpanClick(Sender: TObject);
 begin
-  // masukan data kedalam basis data
-  //try
-  //  with SQLQuery1 do
-  //  begin
-  //    Close;
-  //    SQL.Clear;
-  //    SQL.Add('INSERT INTO data_barang (kategori, nama, gambar, harga_beli, harga_jual, stok)');
-  //    SQL.Add('VALUES (:kategori, :nama, :gambar, :harga_beli, :harga_jual, :stok)');
-  //    Params.ParamByName('kategori_id').AsInteger:=dbLookupKategori.KeyValue;
-  //    Params.ParamByName('nama').AsString:=edtNama.Text;
-  //    Params.ParamByName('harga_beli').AsInteger:=StrToInt(edtHarga.Text);
-  //    Params.ParamByName('harga_jual').AsInteger:=StrToInt(edtHargaJual.Text);
-  //    Params.ParamByName('stok').AsInteger:=StrToInt(edtJumlahStok.Text);
-  //    Params.ParamByName('gambar').AsString:=edtFileGambar.Text;
-  //    ExecSQL;
-  //
-  //    //pesan sukses dan reset input
-  //    ShowMessage('Data BArang Berhasil Di tambahkan');
-  //    edtNama.Text:= '';
-  //    edtHarga.Text:= '';
-  //    edtHargaJual.Text:= '';
-  //    edtJumlahStok.Text:= '';
-  //    edtFileGambar.Text:= '';
-  //  end;
-  //
-  //  except
-  //    on E: Exception do
-  //       ShowMessage('Terjadi Kesalahan'+ E.Message);
-  //  end;
+
   end;
 
 procedure TForm2.Button1Click(Sender: TObject);
@@ -89,18 +62,18 @@ begin
      with SQLQuery2 do
      begin
 
-     SQLQuery1.Close;
-     SQLQuery1.SQL.Clear;
-     SQLQuery1.SQL.Add('INSERT INTO data_barang (nama, kategori, harga_beli, harga_jual, stok)');
-     SQLQuery1.SQL.Add('VALUES (:nama, (SELECT nama FROM kategori WHERE nama = :kategori), :harga_beli, :harga_jual, :stok)');
+     //SQLQuery1.Close;
+     SQL.Clear;
+     SQL.Add('INSERT INTO data_barang (nama, kategori, harga_beli, harga_jual, stok)');
+     SQL.Add('VALUES (:nama, (SELECT nama FROM kategori WHERE nama = :kategori_id), :harga_beli, :harga_jual, :stok)');
 
-     SQLQuery1.ParamByName('nama').AsString := edtNama.Text;
-     SQLQuery1.ParamByName('kategori').AsString:=dbLookupKategori.Text;
-     SQLQuery1.ParamByName('harga_beli').AsInteger := StrToIntDef(edtHarga.Text, 0);
-     SQLQuery1.ParamByName('harga_jual').AsInteger := StrToIntDef(edtHargaJual.Text, 0);
-     SQLQuery1.ParamByName('stok').AsInteger := StrToIntDef(edtJumlahStok.Text, 0);
+     Params.ParamByName('nama').AsString := edtNama.Text;
+     Params.ParamByName('kategori').AsString:=dbLookupKategori.Text;
+     Params.ParamByName('harga_beli').AsInteger := StrToIntDef(edtHarga.Text, 0);
+     Params.ParamByName('harga_jual').AsInteger := StrToIntDef(edtHargaJual.Text, 0);
+     Params.ParamByName('stok').AsInteger := StrToIntDef(edtJumlahStok.Text, 0);
 
-     SQLQuery1.ExecSQL;
+     ExecSQL;
 
      // Commit the transaction after successful execution
      SQLTransaction1.Commit;
@@ -111,6 +84,7 @@ begin
      edtHarga.Text := '';
      edtHargaJual.Text := '';
      edtJumlahStok.Text := '';
+     add := True;
 
      end;
      SQLQuery1.Open;
@@ -118,6 +92,11 @@ begin
        on E: Exception do
           ShowMessage('Terjadi Kesalahan'+ E.Message);
      end;
+end;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+  SQLQuery1.Open;
 end;
 
 

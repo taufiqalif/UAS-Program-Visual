@@ -6,6 +6,7 @@ object Form4: TForm4
   Caption = 'Form4'
   ClientHeight = 297
   ClientWidth = 634
+  Color = clSilver
   object DBGrid1: TDBGrid
     Left = 24
     Height = 151
@@ -30,8 +31,8 @@ object Form4: TForm4
     Left = 256
     Height = 25
     Top = 16
-    Width = 120
-    Caption = 'Detail Barang'
+    Width = 145
+    Caption = 'Kategori Barang'
     Font.CharSet = ANSI_CHARSET
     Font.Height = -19
     Font.Pitch = fpVariable

@@ -14,13 +14,10 @@ type
 
   TForm4 = class(TForm)
     DataSource1: TDataSource;
-    DataSource2: TDataSource;
     DBGrid1: TDBGrid;
-    DBGrid2: TDBGrid;
     Label1: TLabel;
     SQLConnector1: TSQLConnector;
     SQLQuery1: TSQLQuery;
-    SQLQuery2: TSQLQuery;
     SQLTransaction1: TSQLTransaction;
   private
 
